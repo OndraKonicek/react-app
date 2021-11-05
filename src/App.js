@@ -3,14 +3,16 @@ import './App.css';
 
 function App() {
 
-  const [flyFrom, setFlyFrom] = useState("");
-  const [flyTo, setFlyTo] = useState("");
-  const [dateFrom, setDateFrom] = useState("");
-  const [dateTo, setDateTo] = useState("");
+  const affilId = 'data4youcbp202106';
+  const [flyFrom, setFlyFrom] = useState("PRG");
+  const [flyTo, setFlyTo] = useState("VLC");
+  const [dateFrom, setDateFrom] = useState("06/11/2021");
+  const [dateTo, setDateTo] = useState("6/11/2021");
 
 
   async function fetchData() {
-    const response = await fetch (`https://api.skypicker.com/flights`);
+
+    const response = await fetch (`https://api.skypicker.com/flights?flyFrom=${flyFrom}&to=${flyTo}&dateFrom=${dateFrom}&dateTo=${dateTo}&partner=${affilId}`);
     const results = await response.json();
     console.log(results);
   }
